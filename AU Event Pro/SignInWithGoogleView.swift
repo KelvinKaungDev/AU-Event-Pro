@@ -7,7 +7,7 @@ import Firebase
 struct SignInWithGoogleView: View {
     @StateObject private var vm = FirebAuthViewModel()
     @State private var isRegistered = false
-    @State private var showRegistration = false
+//    @State private var showRegistration = false
     @State private var errorMessage: String? = nil
 //    @ObservedObject private var userViewModel = UserViewModel()
     
@@ -77,17 +77,17 @@ struct SignInWithGoogleView: View {
     }
 
     private func signInWithGoogle() {
-        vm.signInWithGoogle(presenting: Application_utility.rootViewController) { error, isNewUser in
+        vm.signInWithGoogle(presenting: Application_utility.rootViewController) { error in
             DispatchQueue.main.async {
                 if let error = error {
                     self.errorMessage = error.localizedDescription
                     return
                 }
-                if isNewUser {
-                    self.showRegistration = true
-                } else {
-                    self.isRegistered = true
-                }
+//                if isNewUser {
+//                    self.showRegistration = true
+//                } else {
+//                    self.isRegistered = true
+//                }
             }
         }
     }
